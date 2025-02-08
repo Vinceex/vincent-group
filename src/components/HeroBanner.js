@@ -1,3 +1,6 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable key-spacing */
+/* eslint-disable quotes */
 import React from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 
@@ -19,7 +22,16 @@ const HeroBanner = () => (
     <Typography fontWeight={600} color="#FF2625" sx={{ opacity: '0.1', display: { lg: 'block', xs: 'none' }, fontSize: '200px' }}>
       Exercise
     </Typography>
-    <img src={HeroBannerImage} alt="hero-banner" className="hero-banner-img" />
+    <img
+      src={HeroBannerImage}
+      alt="hero-banner"
+      className="hero-banner-img"
+      style={{ // Move image down
+        marginTop : "0px",
+        maxWidth: '100%',
+        height: '90vh',
+      }}
+    />
   </Box>
 );
 
