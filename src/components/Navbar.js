@@ -22,6 +22,7 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleLogout = () => {
+    localStorage.removeItem("username")
     navigate("/auth/login");
   };
 
@@ -62,22 +63,22 @@ const Navbar = () => {
             </Button>
           ))}
           
-          <Typography variant="body1" sx={{ fontSize: "18px", fontWeight: "500", color: "#3A1212" }}>
-            Welcome, {username}
-          </Typography>
-
-          <Button
-            onClick={handleLogout}
-            sx={{
-              backgroundColor: "#FF2625",
-              color: "#fff",
-              fontSize: "16px",
-              textTransform: "none",
-              "&:hover": { backgroundColor: "#d91c1c" },
-            }}
-          >
-            Logout
-          </Button>
+         {username && (
+           <><Typography variant="body1" sx={{ fontSize: "18px", fontWeight: "500", color: "#3A1212" }}>
+              Welcome, {username}
+            </Typography><Button
+              onClick={handleLogout}
+              sx={{
+                backgroundColor: "#FF2625",
+                color: "#fff",
+                fontSize: "16px",
+                textTransform: "none",
+                "&:hover": { backgroundColor: "#d91c1c" },
+              }}
+            >
+                Logout
+              </Button></>
+         )}
         </Box>
 
         {/* Mobile Menu Button */}
@@ -104,27 +105,27 @@ const Navbar = () => {
               </ListItem>
             ))}
 
-            <ListItem sx={{ padding: "10px 0" }}>
-              <Typography variant="body1" sx={{ fontSize: "18px", fontWeight: "500", color: "#3A1212" }}>
-                Welcome, {username}
-              </Typography>
-            </ListItem>
-
-            <ListItem sx={{ padding: "10px 0" }}>
-              <Button
-                onClick={handleLogout}
-                sx={{
-                  backgroundColor: "#FF2625",
-                  color: "#fff",
-                  fontSize: "16px",
-                  textTransform: "none",
-                  width: "100%",
-                  "&:hover": { backgroundColor: "#d91c1c" },
-                }}
-              >
-                Logout
-              </Button>
-            </ListItem>
+            {username && (
+              <><ListItem sx={{ padding: "10px 0" }}>
+                <Typography variant="body1" sx={{ fontSize: "18px", fontWeight: "500", color: "#3A1212" }}>
+                  Welcome, {username}
+                </Typography>
+              </ListItem><ListItem sx={{ padding: "10px 0" }}>
+                  <Button
+                    onClick={handleLogout}
+                    sx={{
+                      backgroundColor: "#FF2625",
+                      color: "#fff",
+                      fontSize: "16px",
+                      textTransform: "none",
+                      width: "100%",
+                      "&:hover": { backgroundColor: "#d91c1c" },
+                    }}
+                  >
+                    Logout
+                  </Button>
+                </ListItem></>
+            )}
           </List>
         </Drawer>
       </Toolbar>
